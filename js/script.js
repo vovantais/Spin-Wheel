@@ -25,10 +25,13 @@ var padding = {top:20, right:40, bottom:0, left:0},
                     {"label":"Три факта",  "value":1,  "question":"Каждый член команды по очереди называет 3 факта о себе, один из которых должен быть ложный . Команда должна угадать, какой факт неправдивый."}, //font-family
                     {"label":"Спринт-время года",  "value":1,  "question":"Каждый член команды описывает свои впечатления от спринта с помощью времени года и определений подходящих ему. Пример :Зима: уютная, холодная, внутренняя, неспешная. Весна: новая, растущая, свежая, светлая. Лето: счастливое, жаркое, свежее, веселое. Осень: перемеривая, красочная, ветреная и темная."}, //color
                     {"label":"К счастью и к сожалению",  "value":1,  "question":"Команда придумывает историю, участник называет предложение, которое начинается с “К счастью”, следующий продолжает историю, но его предложение начинается с “К сожалению”. Пример : К счастью, я нашел волшебную лампу. К сожалению, потерев лампу джин не появился. "}, //font-weight
-                    {"label":"Супер Герой",  "value":1,  "question":"Каждый член команды придумывает, что он за супер герой и какой супер силой обладает."}, //font-size
-                    {"label":"Хочу-хочу-хочу!",  "value":1,  "question":"Каждый член команды по очереди называет своё желание на следующий год."}, //background-color
-                    {"label":"Спринт желаний",  "value":1,  "question":"Каждый член команды придумывает задачу, техологию, которую хотелось изучить поработать."}, //nesting
-						  {"label":"Угадай фото",  "value":1,  "question":"Разгодай слова из букв. P.S Три буквы лишние   к е л н д е ц е р ь"}, //nesting
+                    {"label":"Супер Герой",  "value":1,  "question":"Каждый член команды придумывает, что он за супер герой и какой супер силой обладает и почему."},
+                     {"label":"Угадай фильм",  "value":1,  "question":"Каждый член команды показывает действия из фильма, а команда старается угадать название фильма."},
+                    {"label":"Угадайте художника",  "value":1,  "question":"Нужно угадать кто нарисовал это ?"},
+                     //font-size
+                    {"label":"Хочу-хочу-хочу!",  "value":1,  "question":"Каждый член команды по очереди называет своё желание котрым может поделиться."}, //background-color
+                    // {"label":"Спринт желаний",  "value":1,  "question":"Каждый член команды придумывает задачу, техологию, которую хотелось изучить поработать."}, //nesting
+						//   {"label":"Угадай фото",  "value":1,  "question":"Разгодай слова из букв. P.S Три буквы лишние   к е л н д е ц е р ь"}, //nesting
         ];
         var svg = d3.select('#chart')
             .append("svg")
@@ -162,8 +165,6 @@ var padding = {top:20, right:40, bottom:0, left:0},
 		window.addEventListener('dblclick', function (e) {
 			const imgContentHidden = document.querySelector('.hidden');
 			const imgContentShow = document.querySelector('.show');
-			console.log('imgContentHidden ' , imgContentHidden);
-			console.log('imgContentShow ' , imgContentShow)
   			if (imgContentHidden != null && imgContentHidden.classList.contains('hidden')) {
 				  imgContentHidden.classList.remove('hidden');
 				  imgContentHidden.classList.add('show');
@@ -172,3 +173,29 @@ var padding = {top:20, right:40, bottom:0, left:0},
 				  	imgContentShow.classList.add('hidden');
 			  }
 		});
+
+        window.addEventListener('keyup', (event) => {
+           const artists = document.querySelectorAll('.artists');
+           artists.forEach(item => {
+            let dataKey = item.getAttribute('data-key');
+                if (dataKey == event.code) {
+                    item.classList.add('show');
+                } else if (dataKey == event.code) {
+                   item.classList.add('show');
+                } else if (dataKey == event.code) {
+                   item.classList.add('show');
+                } else if (event.code == 'Numpad5') {
+                    item.classList.remove('show');
+                    item.classList.add('hidden');
+                }
+           })
+           const artistName = document.querySelectorAll('.artist');
+           artistName.forEach(item => {
+            if ('Numpad4' == event.code) {
+                item.classList.add('show');
+            } else if (event.code == 'Numpad6') {
+                item.classList.remove('show');
+                item.classList.add('hidden');
+            }
+           })
+        });

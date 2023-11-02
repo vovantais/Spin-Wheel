@@ -1,12 +1,16 @@
-
-
 .hidden {
-	display: none;
+  display: none;
 }
 
 .show {
-	display : block;
-	position: absolute;
-	bottom: 0;
-	right: 0;
+	display: block;
+	position: relative;
+	left: 1200px;
+	top: -500px;
+}
+
+.art {
+  position: relative;
+  left: -300px;
+  top: 100px;
 }
